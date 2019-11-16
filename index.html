@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="telephone=no" name="format-detection" />
+    <title>U券</title>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script>
+      var bizId = 1
+      // 线下商城--默认为false
+      var isMallUnderShop = false
+      // 线上商城--默认为true
+      var isMallShop = false
+      var aliPay = 1
+      var config = {
+        bizId: bizId,
+        isMallUnderShop: isMallUnderShop,
+        isMallShop: isMallShop,
+        aliPay: aliPay
+      }
+     </script>
+    <script>
+      const htmlTag = document.getElementsByTagName('html')[0]
+      htmlTag.style.fontSize = (document.documentElement.clientWidth / 7.5) + 'px'
+
+      // 获取链接？后面的参数
+      function getQuery() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+          var str = url.substr(1);
+          strs = str.split("&");
+          for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=decodeURIComponent(strs[i].split("=")[1]);
+          }
+        }
+        return theRequest;
+      }
+      bizId = getQuery()['biz_id'] || 1;
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
